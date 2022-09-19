@@ -21,7 +21,11 @@ def ftale(x):
 	p=p.replace("\\","/")
 	os.system("cd "+p)
 	##print("cd "+p)
+<<<<<<< HEAD
 	command="hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
+=======
+	command="/opt/rocm/bin/hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
+>>>>>>> 23f0c640beb9604d6687390de1fe5c9c6ac7717e
 	os.system(command)
 	##command="hipcc "+os.path.basename(x)+" -o "+ square.out"
 	##command="hipcc -use-staticlib  square.cpp -o square.out.static"
