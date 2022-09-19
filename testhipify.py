@@ -1,6 +1,31 @@
+import os
+def getListOfFiles(dirName):
+    # create a list of file and sub directories 
+    # names in the given directory 
+    listOfFile = os.listdir(dirName)
+    allFiles = list()
+    # Iterate over all the entries
+    for entry in listOfFile:
+        # Create full path
+        fullPath = os.path.join(dirName, entry)
+        # If entry is a directory then get the list of files in this directory 
+        if os.path.isdir(fullPath):
+            allFiles = allFiles + getListOfFiles(fullPath)
+        else:
+            allFiles.append(fullPath)
+                
+    return allFiles
+
+
+
+
+
 def ftale(x):
+	x=x.replace('"', '')
 	command="perl hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
-	os.system(command)
+	##os.system(command)
+	##command="hipcc "+os.path.basename(x)+" -o "+ square.out"
+	print(command)
 	
 
 def fall(y):
@@ -10,7 +35,7 @@ def fall(y):
 		if i.lower().endswith('.cu') or i.lower().endswith('.cpp'):
 			command="perl hipify-perl "+i+" > "+i+".hip"
 			os.system(command)
-			"""
+			
 	pattern = ["*.cu","*.cpp"]
 	for path, subdirs, files in os.walk(y):
 		for name in files:
@@ -18,12 +43,21 @@ def fall(y):
 				##print(os.path.join(path, name))
 				f=os.path.join(path, name)
 				command="perl hipify-perl "+f+" > "+f+".hip"
-				os.system(command)
+				##os.system(command)
+				print(command)
+				"""
+	y=y.replace('"', '')
+	listOfFiles = getListOfFiles(y)
+	for elem in listOfFiles:
+		if elem.endswith('.cu') or elem.endswith('.cpp'):
+			ftale(elem)	
+		
+        	
             
 
 from fnmatch import fnmatch
 import argparse
-import os
+
 parser=argparse.ArgumentParser()
 parser.add_argument("-t", "--tale", help = "Hipify Single Sample")
 parser.add_argument("-a", "--all", help = "Hipify all Samples")
