@@ -19,7 +19,7 @@ def ftale(x):
 	x=x.replace('"', '')
 	p=os.path.dirname(x)
 	p=p.replace("\\","/")
-	os.command("cd "+p)
+	os.system("cd "+p)
 	##print("cd "+p)
 	command="hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
 	os.system(command)
