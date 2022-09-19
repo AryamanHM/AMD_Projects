@@ -1,14 +1,9 @@
 import os
 def getListOfFiles(dirName):
-    # create a list of file and sub directories 
-    # names in the given directory 
     listOfFile = os.listdir(dirName)
     allFiles = list()
-    # Iterate over all the entries
     for entry in listOfFile:
-        # Create full path
         fullPath = os.path.join(dirName, entry)
-        # If entry is a directory then get the list of files in this directory 
         if os.path.isdir(fullPath):
             allFiles = allFiles + getListOfFiles(fullPath)
         else:
@@ -23,9 +18,9 @@ def getListOfFiles(dirName):
 def ftale(x):
 	x=x.replace('"', '')
 	command="perl hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
-	##os.system(command)
+	os.system(command)
 	##command="hipcc "+os.path.basename(x)+" -o "+ square.out"
-	print(command)
+	##print(command)
 	
 
 def fall(y):
@@ -49,8 +44,9 @@ def fall(y):
 	y=y.replace('"', '')
 	listOfFiles = getListOfFiles(y)
 	for elem in listOfFiles:
-		if elem.endswith('.cu') or elem.endswith('.cpp'):
-			ftale(elem)	
+		if elem.endswith('.cu'):  ##or elem.endswith('.cpp') 
+			ftale(elem) 
+				
 		
         	
             
