@@ -17,10 +17,7 @@ def getListOfFiles(dirName):
 
 def ftale(x):
 	x=x.replace('"', '')
-	x=x.as_posix()
-	p= os.path.dirname(x)
-	os.command("cd "+p)
-	command="hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
+	command="perl hipify-perl "+os.path.basename(x)+" > "+os.path.basename(x)+".hip"
 	os.system(command)
 	##command="hipcc "+os.path.basename(x)+" -o "+ square.out"
 	##print(command)
