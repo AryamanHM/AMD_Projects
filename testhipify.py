@@ -23,6 +23,8 @@ def ftale(x):
 	##print("cd "+p)
 	command="/opt/rocm/bin/hipify-perl "+p+"/"+os.path.basename(x)+" > "+p+"/"+os.path.basename(x)+".hip"
 	os.system(command)
+	command="/opt/rocm/bin/hipcc "++p+"/"+os.path.basename(x)+".hip"
+	os.system(command)
 	##command="hipcc "+os.path.basename(x)+" -o "+ square.out"
 	##command="hipcc -use-staticlib  square.cpp -o square.out.static"
 	##command="./square.out"
